@@ -13,10 +13,9 @@ void setup()
 
   ConfigurationBuilder cb = new ConfigurationBuilder();
   cb.setOAuthConsumerKey("*****YOUR-KEY-HERE******");
-    cb.setOAuthConsumerSecret("*************YOUR-KEY-HERE*************");
-    cb.setOAuthAccessToken("*************YOUR-KEY-HERE***************");
-    cb.setOAuthAccessTokenSecret("**********YOUR-KEY-HERE***************");
-
+  cb.setOAuthConsumerSecret("*************YOUR-KEY-HERE*************");
+  cb.setOAuthAccessToken("*************YOUR-KEY-HERE***************");
+  cb.setOAuthAccessTokenSecret("**********YOUR-KEY-HERE***************");
   TwitterFactory tf = new TwitterFactory(cb.build());
 
   twitter = tf.getInstance();
@@ -34,9 +33,9 @@ void draw()
   fill(200);
   for (int i = 0; i < trends.getTrends().length; i++) {
     if (i < 25)
-      text(trends.getTrends()[i].getName(), 20, 10 + height / 20 * i, 300, 200);
+      text(trends.getTrends()[i].getName(), 20, 10 + height / 30 * i, 300, 200);
     else
-      text(trends.getTrends()[i].getName(), 100, 10 + height / 20 * (i-25), 300, 200);
+      text(trends.getTrends()[i].getName(), 200, 10 + height / 30 * (i-25), 300, 200);
   } 
 
   delay(1000);
