@@ -42,13 +42,22 @@ void setup() {
       }
     }
   }
+}  
 
+void draw()
+{
+  fill(0);
+  rect(0, 0, width, height); 
+
+  fill(200);
   for (Map.Entry<Integer, Prediction> prediction : predictions.entrySet()) {
     int id = prediction.getKey();
     Prediction pred = prediction.getValue();
-    println("Today in " + pred.nameRegion + " the min temperature is " + str(pred.tempMinTod));
+    text("Today in " + pred.nameRegion + " the min temperature is " + str(pred.tempMinTod), 20, 10 + height / 30 * id, 400, 200);
   }
-}  
+
+  delay(1000);
+}
 
 class Prediction {
   String nameRegion, nameCapital;

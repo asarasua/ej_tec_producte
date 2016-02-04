@@ -12,7 +12,7 @@ void setup() {
   for (int i = 0; i < stations.size() ; i++) {
     JSONObject station = stations.getJSONObject(i);
     Station newStation = new Station();
-    newStation.electric = "BIKE".equals(station.getString("tyfope"));
+    newStation.electric = "BIKE".equals(station.getString("type"));
     newStation.streetName = station.getString("streetName");
     newStation.slots = station.getInt("slots");
     newStation.bikes = station.getInt("bikes");
@@ -27,15 +27,21 @@ void setup() {
     }
     stationsMap.put(station.getInt("id"), newStation);
   }
-  
+}
+ 
+void draw()
+{
+  fill(0);
+  rect(0, 0, width, height); 
+
+  fill(200);
   for (Map.Entry<Integer, Station> station : stationsMap.entrySet()) {
     int id = station.getKey();
     Station sta = station.getValue();
-    println("There are " + sta.bikes + " bikes in " + sta.streetName + ", " + sta.streetNumber); 
+    text("There are " + sta.bikes + " bikes in " + sta.streetName + ", " + sta.streetNumber, 20, 10 + height / 30 * id, 400, 200);
   }
-}
- 
-void draw() {
+
+  delay(1000);
 }
 
 class Station {
