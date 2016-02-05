@@ -1,6 +1,6 @@
 /*
-  Ejemplo de lectura de un XML
- Lee los datos de previsión metereológica de MeteoCat (http://static-m.meteo.cat/content/opendata/ctermini_comarcal.xml) y los almacena en un mapa
+  Ejemplo de lectura de un JSON
+ Lee los datos de previsión las estaciones de Bicing (http://wservice.viabicing.cat/v2/stations) y los almacena en un mapa
  
  Álvaro Sarasúa
  */
