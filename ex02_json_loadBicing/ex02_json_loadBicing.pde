@@ -12,7 +12,7 @@ void setup() {
   for (int i = 0; i < stations.size() ; i++) {
     JSONObject station = stations.getJSONObject(i);
     Station newStation = new Station();
-    newStation.electric = "BIKE".equals(station.getString("type"));
+    newStation.electric = "BIKE-ELECTRIC".equals(station.getString("type"));
     newStation.streetName = station.getString("streetName");
     newStation.slots = station.getInt("slots");
     newStation.bikes = station.getInt("bikes");
@@ -48,6 +48,6 @@ class Station {
   String streetName, streetNumber;
   int slots, bikes, altitude;
   float latitude, longitude;
-  boolean electric, status;
+  boolean electric, open;
   IntList nearbyStations;
 }

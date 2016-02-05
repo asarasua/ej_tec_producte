@@ -12,6 +12,7 @@ void setup() {
 
   String xmlContent[] = loadStrings("http://static-m.meteo.cat/content/opendata/ctermini_comarcal.xml");
 
+  println(xmlContent[0]);
   try {
     xml = XML.parse(xmlContent[0]);
   } 
@@ -51,9 +52,9 @@ void draw()
 
   fill(200);
   for (Map.Entry<Integer, Prediction> prediction : predictions.entrySet()) {
-    int id = prediction.getKey();
-    Prediction pred = prediction.getValue();
-    text("Today in " + pred.nameRegion + " the min temperature is " + str(pred.tempMinTod), 20, 10 + height / 30 * id, 400, 200);
+   int id = prediction.getKey();
+   Prediction pred = prediction.getValue();
+   text("Today in " + pred.nameRegion + " the min temperature is " + str(pred.tempMinTod), 20, 10 + height / 30 * id, 400, 200);
   }
 
   delay(1000);
