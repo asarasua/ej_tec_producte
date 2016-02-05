@@ -21,7 +21,7 @@ void setup() {
   //Nuestro formatter lee fechas en el formato que le digamos. dd-MM-yyyy es el formato en el xml que vamos a leer
   SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
   size(400, 400);
-  smooth();
+  //smooth();
 
   //https://processing.org/reference/loadStrings_.html
   String xmlContent[] = loadStrings("http://static-m.meteo.cat/content/opendata/ctermini_comarcal.xml"); 
@@ -39,8 +39,9 @@ void setup() {
   //Si no pasamos ningún nombre como argumento lee todos los hijos
 
   //1 - Recorremos los hijos de nombre "comarca"
-  for (int i = 0; i < xml.getChildren("comarca").length; i++) {
-    XML nodo = xml.getChildren("comarca")[i];
+  XML[] nodosComarca = xml.getChildren("comarca"); //array de objetos XML; cada uno es un nodo "comarca"
+  for (int i = 0; i < nodosComarca.length; i++) {
+    XML nodo = nodosComarca[i];
     //Instanciamos un nuevo objeto de la clase Prediction
     Prediction newPrediction = new Prediction();
     //Leemos los datos, en este caso 2 strings
@@ -51,8 +52,9 @@ void setup() {
   }
 
   //2 - Recorremos los hijos de nombre "prediccio"
-  for (int i = 0; i < xml.getChildren("prediccio").length; i++) {
-    XML nodo = xml.getChildren("prediccio")[i];
+  XML[] nodosPrediccio = xml.getChildren("prediccio"); //array de objetos XML; cada uno es un nodo "prediccio"
+  for (int i = 0; i < nodosPrediccio.length; i++) {
+    XML nodo = nodosPrediccio[i];
     //leemos el id de la comarca para esta predicción
     int idRegion = nodo.getInt("idcomarca");
 
@@ -86,7 +88,7 @@ void draw()
     Prediction pred = prediction.getValue();
     text("Today in " + pred.nameRegion + " the min temperature is " + str(pred.tempMinTod), 20, 10 + height / 30 * id, 400, 200);
   }
-  delay(10000);
+  delay(1000);
 }
 
 //Clase para almacenar los datos de una predicción
